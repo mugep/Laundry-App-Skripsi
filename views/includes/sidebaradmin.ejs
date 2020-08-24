@@ -1,0 +1,14 @@
+<div class="sidebar">
+    <h2>Pasti Laundry</h2>
+    <ul>
+        <li><a href="/admin/add-pelanggan"><i class="far fa-address-card"></i> Input Data Pelanggan</a></li>
+        <li><a href="/admin/data-pelanggan"><i class="fas fa-users"></i> Transaksi</a></li>
+        <li><a href="/admin/laporan-pelanggan"><i class="fas fa-print"></i> Laporan</a></li>
+        <li>
+            <form action="/logout" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="alert alert-light" type="submit"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+            </form>
+        </li>
+    </ul>
+</div>

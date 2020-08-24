@@ -1,0 +1,44 @@
+<%- include('../includes/headadmin.ejs') %>
+</head>
+<body>
+    <div class="wrapper">
+        <%- include('../includes/sidebaradmin.ejs') %>
+
+        <div class="main_content">
+            <div class="header">DATA PELANGGAN</div>
+            <div class="info">
+              <%  if(data.length > 0) { %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Layanan</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Pembayaran</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <% for(let datapelanggan of data)  { %>
+                    <td><%= datapelanggan.tanggal %></td>
+                    <td><%= datapelanggan.nama %></td>
+                    <td><%= datapelanggan.layanan %></td>
+                    <td><%= datapelanggan.status %></td>
+                    <td><%= datapelanggan.harga %></td>
+                    <td><%= datapelanggan.pembayaran %></td>
+                    <td><a class="btn btn-info" href="/admin/data-pelanggan/<%= datapelanggan._id %>" role="button">Rinci</a></td>
+                  </tr>
+                </tbody>
+                <% } %>
+              </table>
+              <% } else { %>
+                <h1>No Data</h1>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

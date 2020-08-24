@@ -1,0 +1,87 @@
+<%- include('../includes/headadmin.ejs') %>
+</head>
+<body>
+    <div class="wrapper">
+        <%- include('../includes/sidebaradmin.ejs') %>
+
+        <div class="main_content">
+            <div class="header">RINCI DATA PELANGGAN</div>
+            <div class="info">
+                <div class="panel">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-user"></i> RINCI TRANSAKSI</h5>
+                        <form method="post" action="/admin/data-pelanggan">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="alert alert-primary">Nama</td>
+                                        <td><%= data.nama %></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="alert alert-primary">Email</td>
+                                        <td><%= data.email %></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="alert alert-primary">Alamat</td>
+                                        <td><%= data.alamat %></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="alert alert-primary">Status Laundry</td>
+                                        <td>
+                                            <select name="status" id="status" class="form-control">
+                                                <option name="status" aria-placeholder="<%= data.status %>">Proses....</option>
+                                                <option name="status" aria-placeholder="<%= data.status %>">Proses Pencucian</option>
+                                                <option name="status" aria-placeholder="<%= data.status %>">Proses Seterika</option>
+                                                <option name="status" aria-placeholder="<%= data.status %>">Selesai</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="alert alert-primary">Status Pembayaran</td>
+                                        <td>
+                                            <select id="pembayaran" name="pembayaran" class="form-control">
+                                                <option name="pembayaran">Belum Bayar</option>
+                                                <option name="pembayaran">Sudah Lunas</option>
+                                              </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="alert alert-primary">Tanggal</td>
+                                        <td><%= data.tanggal %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Layanan</th>
+                                    <th scope="col">Paket</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Harga</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td><%= data.layanan %></td>
+                                      <td><%= data.paket %></td>
+                                      <td><%= data.berat %></td>
+                                      <td><%= data.harga %></td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                                <input type="hidden" value="<%= data._id %>" name="dataId">
+                                <button type="submit" class="btn btn-primary">Proses Order</button>
+                        </form>
+                        <form action="/admin/hapus-pelanggan" method="POST">
+                            <input type="hidden" value="<%= data._id %>" name="dataId">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                        <a class="btn btn-dark" href="/admin/data-invoice/<%= data._id %>">Cetak Invoice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<%- include('../includes/headclient.ejs') %>
+</head>
+<body>
+    <%- include('../includes/clientnav.ejs') %>
+
+      <div class="container cek-status">
+        <!-- <form class="form-inline my-2 my-lg-0 formcek"> -->
+            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+          <!-- </form> -->
+          <%  if(data.length > 0) { %>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Layanan</th>
+                <th scope="col">Status</th>
+                <th scope="col">Pembayaran</th>
+                <th scope="col">Harga</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% for(let datapelanggan of data)  { %>
+                  <td><%= datapelanggan.tanggal %></td>
+                  <td><%= datapelanggan.nama %></td>
+                  <td><%= datapelanggan.layanan %></td>
+                  <td><%= datapelanggan.status %></td>
+                  <td><%= datapelanggan.pembayaran %></td>
+                  <td><%= datapelanggan.harga %></td>
+              </tr>
+            </tbody>
+            <% } %>
+          </table>
+          <% } else { %>
+            <h1>No Data</h1>
+            <% } %>
+      </div>
+
+<!-- Site footer -->
+<%- include('../includes/footerclient.ejs') %>
+</body>
+</html>
